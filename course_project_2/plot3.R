@@ -8,19 +8,19 @@ MakePlot3 <- function() {
     file.remove(file.name)
   }
 
-  baltimore.city.fips <- 24510
+  baltimore.city.fips <- '24510'
 
-  baltimore.total.emissions.by.year <- summary.scc.pm25.data %>%
+  baltimore.city.emissions.by.year <- summary.scc.pm25.data %>%
     filter(fips == baltimore.city.fips) %>%
     group_by(year, type) %>%
     summarise(Emissions = sum(Emissions))
 
-  baltimore.total.emissions.by.year.types <- unique(baltimore.total.emissions.by.year$type)
+  baltimore.city.emissions.by.year.types <- unique(baltimore.city.emissions.by.year$type)
 
-  ggplot(baltimore.total.emissions.by.year, aes(year, Emissions)) +
+  ggplot(baltimore.city.emissions.by.year, aes(year, Emissions)) +
     facet_wrap(~type) +
     ggtitle('Baltimore City, Maryland, PM2.5 Emissions of different types, by year') +
-    scale_x_continuous(breaks = unique(baltimore.total.emissions.by.year$year)) +
+    scale_x_continuous(breaks = unique(baltimore.city.emissions.by.year$year)) +
     geom_point() +
     theme(panel.spacing.x = unit(2, 'lines'))
 
@@ -28,4 +28,4 @@ MakePlot3 <- function() {
 
 }
 
-foo <- MakePlot3()
+MakePlot3()

@@ -15,7 +15,7 @@ MakePlot1 <- function() {
     summarise(Emissions = sum(Emissions))
 
   plot(total.emissions.by.year,
-       main = 'United States\' Total PM2.5 Emissions',
+       main = 'United States\' Total PM2.5 Emissions, per Year',
        xaxt='n')
 
   axis(1, at = total.emissions.by.year$year,

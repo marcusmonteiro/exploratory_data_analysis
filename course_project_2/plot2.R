@@ -10,7 +10,7 @@ MakePlot2 <- function() {
 
   png(file.name)
 
-  baltimore.city.fips <- 24510
+  baltimore.city.fips <- '24510'
 
   total.emissions.by.year <- summary.scc.pm25.data %>%
     filter(fips == baltimore.city.fips) %>%
